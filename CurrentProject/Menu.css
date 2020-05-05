@@ -1,0 +1,286 @@
+html {
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    font-style: sans-serif;
+
+    text-align: center;
+
+}
+
+body {
+
+    width: 100%;
+
+    height: 100%;
+
+    font-family: 'Open Sans', sans-serif;
+
+    margin: 0;
+
+    background-color: #4A374A;
+
+    text-align: center;
+
+    background-image: url(back.jpg);
+
+    background-size: cover;
+
+    background-attachment: auto;
+}
+
+
+
+#login {
+
+    position: absolute;
+
+    top: 0%;
+
+    left: 0%;
+
+    margin: -150px 0 0 -150px;
+
+    width: 300px;
+
+    height: 300px;
+
+    text-align: center;
+
+}
+/*
+#login h1 {
+
+    color: rgb(255, 255, 255);
+
+    /*text-shadow: 1px 1px 1px;
+
+    letter-spacing: 1px;
+
+    text-align: center;
+
+}
+
+
+h1 {
+
+    font-size: 3em;
+
+    margin: 0.67em 0;
+
+    color: white;
+
+    /*text-shadow: 3px 3px 3px;
+}
+
+
+h3 {
+    font-size: 3em;
+
+    margin: 0.1em 0;
+
+    color: rgb(206, 79, 20);
+
+    text-shadow: 3px 3px 3px;
+}
+
+.myHeader {
+    text-align: center;
+    padding: 32px;
+  }
+*/
+  .mapGenBanner {
+    background-image: url("./Resources/Images/UI/red_header_crest_outlined.png");
+    background-size: 500px 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-top: 1%;
+    padding-bottom: 2%;
+    color: whitesmoke;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+  }
+
+
+.but {
+
+    width: 300px;
+
+    height: 40px;
+
+    margin-bottom: 5px;
+
+    text-align: center;
+
+    background-color: hsl(220, 76%, 27%);
+
+    border: 2px solid #20293a;
+
+    color: #fff;
+
+    padding: 9px 14px;
+
+    font-size: 15px;
+
+    line-height: normal;
+
+    vertical-align: middle;
+
+    border-radius: 40px;
+
+    margin: 010;
+
+}
+
+.but:hover {
+    background: #fff;
+    color: hsl(220, 76%, 27%);
+}
+
+#info {
+    width: 300px;
+
+    height: 40px;
+
+    margin-bottom: 5px;
+
+    text-align: center;
+
+    background-color: hsl(220, 76%, 27%);
+
+    border: 2px solid #20293a;
+
+    color: #fff;
+
+    padding: 9px 14px;
+
+    font-size: 15px;
+
+    line-height: normal;
+
+    vertical-align: middle;
+
+    border-radius: 40px;
+
+    margin: 010;
+
+    text-decoration: none;
+}
+
+.info:hover {
+    background: #fff;
+    color: hsl(220, 76%, 27%);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+#dropdown-content {
+
+    display: none;
+    position: absolute;
+    background-color: #e92323;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+
+}
+
+#add-player input,
+#dropwown-content a {
+
+    background-color: hsl(240, 3%, 54%);
+
+    color: black;
+
+    padding: 10px 10px;
+
+    text-decoration: none;
+
+    display: block;
+
+    border-radius: 5px;
+
+    margin-top: 5px;
+}
+
+
+#dropdown-content a:hover {
+    background-color: rgb(20, 3, 3);
+}
+
+.dropdown:hover #dropdown-content {
+    display: block;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#add-player>div {
+    display: flex !important;
+    padding-bottom: 10px;
+}
+
+#add-player input {
+    flex: 1;
+}
+
+
+.firend-list {
+    border: 1px solid #20293a;
+    flex-wrap: wrap;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.firend-list-item {
+    display: flex;
+    margin: 5px;
+    border-bottom: 1px solid;
+}
+
+
+
+.my-firend-list {
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    width: 100px;
+    position: fixed;
+    top: 25%;
+    left: 10px;
+    color: #fff;
+}
+
+.my-firend-list table {
+    width: 200px;
+    cursor: default;
+}
+
+.my-firend-list table,
+th,
+td {
+    border: 1px solid black;
+    background: hsl(220, 76%, 27%);
+    color: #fff;
+}
+
+.my-firend-list table .select,
+.my-firend-list table tr td:hover {
+    background-color: #9d9790;
+}
+
+.my-firend-list table .master {
+    color: red;
+    font-weight: 900;
+}

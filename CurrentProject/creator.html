@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./request.js"></script>
+    <script src="./creator.js"></script>
+    <title>D&D Character Creator</title>
+    <style>
+        div.returnButton {
+            position: absolute;
+            bottom: 20px;
+        }
+
+        div.pageLabel {
+            position: absolute;
+
+        }
+
+        div.cen {
+            text-align: center;
+        }
+    </style>
+    <div class="cen">
+        <h1>Character Creator Sheet</h1>
+    </div>
+
+</head>
+
+<body onload="CharacterSheet.setData()">
+
+    <!-- <div><label>Character Creator</label></div>
+    -->
+    <style type="text/css">
+        html {
+            background-image: url("../Resources/Images/DnDone_Background_Char_sheet.png");
+            background-size: cover;
+        }
+
+        .tg {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .tg td {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            padding: 10px 5px;
+            border-style: solid;
+            border-width: 0px;
+            overflow: hidden;
+            word-break: normal;
+            border-color: rgb(155, 139, 139);
+        }
+
+        .tg th {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            padding: 10px 5px;
+            border-style: solid;
+            border-width: 0px;
+            overflow: hidden;
+            word-break: normal;
+            border-color: black;
+        }
+
+        .tg .tg-oqdi {
+            font-size: 20px;
+            background-color: rgb(155, 139, 139, 0);
+            color: #000000;
+            border-color: #000000;
+            text-align: left;
+            vertical-align: top
+        }
+
+        .tg .tg-ux0e {
+            font-size: 20px;
+            background-color: rgb(155, 139, 139, 0);
+            border-color: #000000;
+            text-align: left;
+            vertical-align: top
+        }
+
+        .tg .tg-0lax {
+            text-align: left;
+            vertical-align: top
+        }
+    </style>
+    <table id="MainTable" class="tg">
+        <form action="creator.html" methods="GET"></form>
+        <tr>
+            <th class="tg-oqdi">
+                DNDONE
+            </th>
+            <th class="tg-ux0e"></th>
+            <th class="tg-ux0e"></th>
+            <th class="tg-ux0e"></th>
+            <th class="tg-0lax"></th>
+            <th class="tg-0lax"></th>
+            <th class="tg-0lax"></th>
+            <th class="tg-0lax"></th>
+        </tr>
+        <tr>
+            <td class="tg-ux0e">
+                <label> Character Name
+                    <input type="text" name="CharacterName" placeholder="Character" required>
+                </label>
+            </td>
+            <td class="tg-ux0e">
+
+                <label>Class</label>
+                <select id="Class" name="Class">
+                    <option value="none">
+                        none
+                    </option>
+                    <option value="Barbarian">
+                        Barbarian
+                    </option>
+                    <option value="Bard">
+                        Bard
+                    </option>
+                    <option value="Cleric">
+                        Cleric
+                    </option>
+                    <option value="Druid">
+                        Druid
+                    </option>
+                    <option value="Fighter">
+                        Fighter
+                    </option>
+                    <option value="Monk">
+                        Monk
+                    </option>
+                    <option value="Paladin">
+                        Paladin
+                    </option>
+                    <option value="Ranger">
+                        Ranger
+                    </option>
+                    <option value="Rouge">
+                        Rouge
+                    </option>
+                    <option value="Sorcerer">
+                        Sorcerer
+                    </option>
+                    <option value="Warlock">
+                        Warlock
+                    </option>
+                    <option value="Wizard">
+                        Wizard
+                    </option>
+                </select>
+
+                <label>Lvl
+                    <input type="text" oninput="CharacterSheet.updateData()" id="level" name="Level" placeholder="Level" required>
+                </label>
+
+                <br>
+
+                <label>Race</label>
+                <select id="Race" name="Race">
+                    <option value="none">
+                        none
+                    </option>
+                    <option value="Dragonborn">
+                        Dragonborn
+                    </option>
+                    <option value="Dwarf">
+                        Dwarf
+                    </option>
+                    <option value="Elf">
+                        Elf
+                    </option>
+                    <option value="Gnome">
+                        Gnome
+                    </option>
+                    <option value="Half-Elf">
+                        Half-Elf
+                    </option>
+                    <option value="Halfling">
+                        Halfling
+                    </option>
+                    <option value="Half-Orc">
+                        Half-Orc
+                    </option>
+                    <option value="Human">
+                        Human
+                    </option>
+                    <option value="Tiefling">
+                        Tiefling
+                    </option>
+                </select>
+
+                <br>
+
+                Sex
+                <select name="Sex" id="Sex">
+                    <option value="none">
+                        none
+                    </option>
+                    <option value="Male">
+                        Male
+                    </option>
+                    <option value="Female">
+                        Female
+                    </option>
+                </select>
+
+            </td>
+            <td class="tg-ux0e">
+                <label> Background
+                    <input type="text" oninput="CharacterSheet.updateData()" id="Background" name="Background" placeholder="Background" required>
+                </label>
+                <br>
+                <label> Alignment
+                    <input type="text" oninput="CharacterSheet.updateData()" id="Alignment" name="Alignment" placeholder="aligment" required>
+                </label>
+
+            </td>
+            <td class="tg-ux0e">
+                <label> Player Name:
+                    <input type="text" oninput="CharacterSheet.updateData()" id="PlayerName" name="Player Name" placeholder="Player Name" required>
+                </label>
+                <br>
+                <label> ExP
+                    <input type="text" oninput="CharacterSheet.updateData()" id="ExP" name="Experience Points" placeholder="ExP" required>
+                </label>
+
+            </td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+        </tr>
+        <tr>
+            <td class="tg-ux0e" rowspan="2">
+                <label> Strength
+                    <input id="Strength" type="number">
+                </label>
+                <br>
+                <label> Strength Mod
+                    <input name="Strength Mod" type="number">
+                </label>
+                <br><br>
+                <label> Dexterity
+                    <input id="Dexterity" type="number">
+                </label>
+                <br>
+                <label> Dexterity Mod
+                    <input name="Dexterity Mod" type="number">
+                </label>
+                <br><br>
+                <label> Constitution
+                    <input id="Constitution" type="number">
+                </label>
+                <br>
+                <label> Constitution Mod
+                    <input name="Constitution Mod" type="number">
+                </label>
+            </td>
+            <td class="tg-ux0e" rowspan="2">Saving Throws:<br><br>
+                <input type="checkbox" onclick="CharacterSheet.updateData()" id="StrengthSTP" name="Strength" value="Strength">
+                <label for="Strength"> Strength</label>
+                <input id="StrengthST" type="text" oninput="CharacterSheet.updateData()">
+                <br>
+
+                <input type="checkbox" onclick="CharacterSheet.updateData()" id="DexteritySTP" name="Dexterity" value="Dexterity">
+                <label for="Dexterity"> Dexterity</label>
+                <input id="DexterityST" type="text" oninput="CharacterSheet.updateData()">
+                <br>
+
+                <input type="checkbox" onclick="CharacterSheet.updateData()" id="ConstitutionSTP" name="Constitution" value="Constitution">
+                <label for="Constitution"> Constitution</label>
+                <input id="ConstitutionST" type="text" oninput="CharacterSheet.updateData()">
+                <br>
+
+                <input type="checkbox" onclick="CharacterSheet.updateData()" id="IntelligenceSTP" name="Intelligence" value="Intelligence">
+                <label for="Intelligence"> Intelligence</label>
+                <input id="IntelligenceST" type="text" oninput="CharacterSheet.updateData()">
+                <br>
+
+                <input type="checkbox" onclick="CharacterSheet.updateData()" id="WisdomSTP" name="Wisdom" value="Wisdom">
+                <label for="Wisdom"> Wisdom</label>
+                <input id="WisdomST" type="text" oninput="CharacterSheet.updateData()">
+                <br>
+
+                <input type="checkbox" onclick="CharacterSheet.updateData()" id="CharismaSTP" name="Charisma" value="Charisma">
+                <label for="Charisma"> Charisma</label>
+                <input id="CharismaST" type="text" oninput="CharacterSheet.updateData()">
+                <br>
+            </td>
+            <td class="tg-ux0e">
+
+                Initiative <input id="Initiative" type="number"><br>
+                Speed <input id="Speed" type="number"><br><br>
+                <label>
+                    Hit Points
+                    <input id="HitPoints" type="number" >
+                </label>
+                <br>
+                <label>
+                    Current Hit Points
+                    <input id="CurrentHP" type="number" >
+                </label>
+
+
+            </td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+        </tr>
+        <tr>
+            <td class="tg-ux0e">
+
+            </td>
+            <td class="tg-ux0e">
+                Armour <br>
+                <input id="Armour" type="number" name="ArmourStat" placeholder="armour">
+                <br>
+                Shield <br>
+                <input id="Shield" type="number" name="ShieldStat" placeholder="shield">
+            </td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+        </tr>
+        <tr>
+            <td class="tg-ux0e" rowspan="2">
+
+                <label> Intelligence
+                    <input id="Intelligence" type="number">
+                </label>
+                <br>
+                <label> Intelligence Mod
+                    <input name="Intelligence Mod" type="number">
+                </label>
+
+                <br><br>
+                <label>Wisdom
+                    <input id="Wisdom" type="number">
+                </label>
+                <br>
+                <label>Wisdom Mod
+                    <input name="Wisdom Mod" type="number">
+                </label>
+
+                <br><br>
+                <label>Charisma
+                    <input id="Charisma" type="number">
+                </label>
+                <br>
+                <label>Charisma Mod
+                    <input name="Charisma" type="number">
+                </label>
+                <br><br>
+
+                Treasures
+                <br>
+                <textarea id="Treasures" rows="10" cols="50"> </textarea>
+
+            </td>
+            <td class="tg-ux0e"> Skills: <br><br>
+
+                <select id="Acrobatics_Proficiency">
+                    <option value=0>None</option>
+                    <option value=1>Proficiency</option>
+                    <option value=2>Expertise</option>
+                </select>Acrobatics<br>
+
+                <select id="Animal_Handling_Proficiency">
+                    <option value=0>None</option>
+                    <option value=1>Proficiency</option>
+                    <option value=2>Expertise</option>
+                </select>Animal Handling<br>
+
+                <select id="Arcana_Proficiency">
+                    <option value=0>None</option>
+                    <option value=1>Proficiency</option>
+                    <option value=2>Expertise</option>
+                </select>Arcana<br>
+
+                <select id="Athletics_Proficiency">
+                    <option value=0>None</option>
+                    <option value=1>Proficiency</option>
+                    <option value=2>Expertise</option>
+                </select>Athletics<br>
+
+                <select id="Deception_Proficiency">
+                    <option value=0>None</option>
+                    <option value=1>Proficiency</option>
+                    <option value=2>Expertise</option>
+                </select>Deception<br>
+
+                <select id="History_Proficiency">
+                    <option value=0>None</option>
+                    <option value=1>Proficiency</option>
+                    <option value=2>Expertise</option>
+                </select>History<br>
+
+                <select id="Insight_Proficiency">
+                    <option value=0>None</option>
+                    <option value=1>Proficiency</option>
+                    <option value=2>Expertise</option>
+                </select>Insight<br>
+
+                <select id="Intimidation_Proficiency">
+                    <option value=0>None</option>
+                    <option value=1>Proficiency</option>
+                    <option value=2>Expertise</option>
+                </select>Intimidation<br>
+
+                <select id="Investigation_Proficiency">
+                    <option value=0>None</option>
+                    <option value=1>Proficiency</option>
+                    <option value=2>Expertise</option>
+                </select>Investigation<br>
+
+                <select id="Medicine_Proficiency">
+                    <option value=0>None</option>
+                    <option value=1>Proficiency</option>
+                    <option value=2>Expertise</option>
+                </select>Medicine<br>
+
+                <select id="Nature">
+                    <option value=0>None</option>
+                    <option value=1>Proficiency</option>
+                    <option value=2>Expertise</option>
+                </select>Nature<br>
+
+                <select id="Perception">
+                    <option value=0>None</option>
+                    <option value=1>Proficiency</option>
+                    <option value=2>Expertise</option>
+                </select>Perception<br>
+
+                <select id="Performance_Proficiency">
+                    <option value=0>None</option>
+                    <option value=1>Proficiency</option>
+                    <option value=2>Expertise</option>
+                </select>Performance<br>
+
+                <select id="Persuasion_Proficiency">
+                    <option value=0>None</option>
+                    <option value=1>Proficiency</option>
+                    <option value=2>Expertise</option>
+                </select>Persuasion<br>
+
+                <select id="Religion_Proficiency">
+                    <option value=0>None</option>
+                    <option value=1>Proficiency</option>
+                    <option value=2>Expertise</option>
+                </select>Religion<br>
+
+                <select id="Sleight_of_Hand_Proficiency">
+                    <option value=0>None</option>
+                    <option value=1>Proficiency</option>
+                    <option value=2>Expertise</option>
+                </select>Sleight of Hand<br>
+
+                <select id="Stealth_Proficiency">
+                    <option value=0>None</option>
+                    <option value=1>Proficiency</option>
+                    <option value=2>Expertise</option>
+                </select>Stealth<br>
+
+                <select id="Survival_Proficiency">
+                    <option value=0>None</option>
+                    <option value=1>Proficiency</option>
+                    <option value=2>Expertise</option>
+                </select>Survival<br>
+            </td>
+
+            <td class="tg-ux0e">Weapons & Attacks <br>
+                <label>Slot1:
+                    <input type="text" oninput="CharacterSheet.updateData()" id="WeaponSlot1" name="WeaponSlot1" placeholder="weapon/attack">
+                    <input type="text" oninput="CharacterSheet.updateData()" id="Weapon1DMG" name="WeaponDMG1" placeholder="weaponDMG">
+                </label>
+                <br>
+                <label>Slot2:
+                    <input type="text" oninput="CharacterSheet.updateData()" id="WeaponSlot2" name="WeaponSlot2" placeholder="weapon/attack">
+                    <input type="text" oninput="CharacterSheet.updateData()" id="Weapon2DMG" name="WeaponDMG2" placeholder="weaponDMG">
+                </label>
+                <br>
+                <label>Slot3:
+                    <input type="text" oninput="CharacterSheet.updateData()" id="WeaponSlot3" name="WeaponSlot3" placeholder="weapon/attack">
+                    <input type="text" oninput="CharacterSheet.updateData()" id="Weapon3DMG" name="WeaponDMG3" placeholder="weaponDMG">
+                </label>
+                <br>
+                <label>Slot4:
+                    <input type="text" oninput="CharacterSheet.updateData()" id="WeaponSlot4" name="WeaponSlot4" placeholder="weapon/attack">
+                    <input type="text" oninput="CharacterSheet.updateData()" id="Weapon4DMG" name="WeaponDMG4" placeholder="weaponDMG">
+                </label>
+            </td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+            <td class="tg-0lax"></td>
+        </tr>
+        <tr>
+            <td class="tg-ux0e">
+
+            </td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+        </tr>
+        <tr>
+            <td class="tg-ux0e">
+
+            </td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+        </tr>
+        <tr>
+            <td class="tg-ux0e">
+
+            </td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+        </tr>
+        <tr>
+            <td class="tg-ux0e">
+                Treasures: <br>
+
+            </td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+            <td class="tg-ux0e"></td>
+        </tr>
+
+        </form>
+        <div>
+            <!-- Submit button to submit data to database using POST-->
+            <button onclick="creator.submit()">Submit</button>
+            <script>
+                function goBack() {
+                    window.history.back()
+                }
+
+                window.creator = new Creator();
+                window.creator.init();
+
+
+            </script>
+            <button onclick="goBack()">Back</button>
+        </div>
+
+
+
+
+
+</body>
+
+</html>

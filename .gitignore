@@ -1,0 +1,8 @@
+.history
+node_modules/
+package-lock.json
+sample.db
+yarn-error.log
+CurrentProject/request.js.bak
+CurrentProject/request.es6.js
+gulpfile.js

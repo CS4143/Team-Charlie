@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Menu</title>
+
+    <link rel="stylesheet" href="Menu.css" />
+    <script src="./request.js"></script>
+
+</head>
+
+<body>
+
+    <div class="my-firend-list">
+        <table>
+            <thead>
+                <tr>
+                    <td>friend list</td>
+                </tr>
+            </thead>
+            <tbody id="firendListTableBody">
+
+            </tbody>
+        </table>
+    </div>
+
+    <!--<div id="Menu"></div>-->
+
+      <!--<img id="Logo" src="logo.png" alt="D&D Logo" width="200px" hight="200px" ;>-->
+    <div class="mapGenBanner" id="myHeader">
+        <h1>DnDone & Menu</h1>
+        </div>
+
+
+
+    <div>
+        <a href="creator.html">
+            <button class="but" type="button">Create New Character</button>
+        </a>
+    </div>
+
+    <div class="dropdown">
+        <button class="but" onclick="show_hide('dropwown-content')">Edit existing Character</button>
+        <div style="display: none;" id="dropwown-content">
+            <a href="./map1.html">Character1</a>
+            <a href="#">Character2</a>
+            <a href="#">Character3</a>
+        </div>
+    </div>
+
+
+
+
+    <div>
+        <button class="but" type="button" onclick="creator.setCurrentSelectFirendMaster()"> new Dungeon Master</button>
+    </div>
+
+    <div class="dropdown">
+        <div>
+            <button class="but" type="submit" onclick="show_hide('add-player')">Add Player</button>
+        </div>
+        <div style="display: none;" id="add-player">
+            <!-- <div id="add-player"> -->
+            <div>
+                <input id="firendName" name="firendName" placeholder="enter username">
+                <button onclick="creator.search()">search</button>
+            </div>
+            <div id="firendList" class="firend-list">
+                enter search username
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <button class="but" type="menu" onclick="creator.removeCurrentSelectFirend()">Remove Player</button>
+    </div>
+
+    <div>
+        <button class="but" type="button" onclick="window.open('https://dnd.wizards.com/articles/features/basicrules')">Instruction for New</button>
+    </div>
+
+    <div>
+        <button class="but" type="button" onclick="window.location.href='map_generator.html'">Map Generator</button>
+    </div>
+
+    </p>
+    <div>
+        <a href="javascript:void(0)" onclick="creator.logout()">Back to Login/Login out</a>
+    </div>
+    <script>
+
+        window.creator = new Creator();
+        window.creator.myList();
+        window.creator.myFirend();
+
+
+
+        function show_hide(elementId) {
+            // "dropwown-content"
+            var click = document.getElementById(elementId);
+            if (click.style.display === "none") {
+                click.style.display = "block";
+
+                if (elementId === 'add-player') {
+                    document.getElementById('firendName').focus();
+                }
+            }
+            else {
+                click.style.display = "none";
+            }
+        }
+
+    </script>
+
+
+</body>
+
+</html>

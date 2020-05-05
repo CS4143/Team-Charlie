@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="Login.css" />
+    <script src="./request.js" ></script>
+
+    <script>
+        console.log('---------1-');
+        window.userInfo = new UserInfo();
+        console.log('window.userInfo:', window.userInfo);
+
+    </script>
+
+</head>
+
+<body>
+
+    <!--<img id="Logo" src="logo.png" alt="D&D Logo" width="200px" hight="200px" ;>-->
+    <div class="mapGenBanner" id="myHeader">
+        <h1>DnDone & Login</h1>
+        </div>
+
+
+    <div>
+        <input type="text" id="username" required="required" placeholder="UserID" name="u"></input>
+    </div>
+
+    <div>
+        <input type="password" id="p" required="required" placeholder="Password" name="p"></input>
+    </div>
+
+    <div>
+        <input type="submit" id="button" value="Login" onclick="userInfo.submit();" />
+    </div>
+    <p>Don't have an account?</p>
+    <div class="container">
+        <a id="but" href="#" class="button">Sign up!</a>
+    </div>
+
+
+
+    <div class="popup">
+        <div class="popup-content">
+            <img src="close.jpg" alt="close" class="close">
+            <input type="text" placeholder="Username" id="re-name">
+            <input type="password" placeholder="password" id="re-pass">
+            <input type="password" placeholder="re-type password" id="re2-pass">
+            <div>
+                <a href="#" class="button" id="but2" onclick=" userInfo.register()">SIGN UP</a>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        document.getElementById("but").addEventListener("click", function () {
+            document.querySelector(".popup").style.display = "flex";
+        })
+
+        document.querySelector(".close").addEventListener("click", function () {
+            document.querySelector(".popup").style.display = "none";
+        })
+
+        var pass1 = document.getElementById("re-pass");
+        var pass2 = document.getElementById("re2-pass");
+        var user1 = document.getElementById("re-name");
+
+
+
+        function SignUp() {
+            if (pass1.value === pass2.value) {
+                //alert("Sign up completed.");
+                myAjax('get', `http://127.0.0.1:3000/signUp?user=${user1.value}&pass=${pass2.value}`).then(res => {
+                    console.log(res)
+                    alert(res.msg)
+
+                })//pass the data(password and username) to back-end
+            }
+            else if (pass1.value !== pass2.value)
+                alert("Passwords can't match each other!!");
+        }
+
+        function Login() {
+            // var username = document.getElementById("u");
+            // var pass = document.getElementById("p");
+            // console.log(username)
+            // console.log(pass)
+            // if (username.value && pass.value) {
+            //     myAjax('get', `http://127.0.0.1:3000/Login?user=${username.value}&pass=${pass.value}`).then(res => {
+            //         console.log(res)
+            //         alert(res.msg)
+            //        if(res.msg=="Login Completed")
+            //        {
+            //             window.location.href="Menu.html";
+            //        }     
+            //     })
+            // } else {
+            // alert('Username/Password not Found')
+            // }
+
+
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

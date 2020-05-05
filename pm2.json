@@ -1,0 +1,18 @@
+{
+  "apps": [{
+    "name": "dndone",
+    "script": "app.js",
+    "exec_mode": "cluster",
+    "instances": 1,
+    "max_memory_restart": "1G",
+    "autorestart": true,
+    "node_args": [],
+    "args": [],
+    "out_file": "/mnt/log/dndone/out.log",
+    "error_file": "/mnt/log/dndone/err.log",
+    "env": {
+      "PORT": 3000,
+      "NODE_ENV": "production"
+    }
+  }]
+}
